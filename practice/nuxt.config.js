@@ -1,4 +1,10 @@
+const pkg = require('./package')
+const webpack = require('webpack')
+
 export default {
+  // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
+  ssr: false,
+
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     title: 'practice',
@@ -32,9 +38,19 @@ export default {
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
+    '@nuxtjs/dotenv'
   ],
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
+    extend(config,ctx){
+
+    },
+    plugins: [
+      new webpack.ProvidePlugin({
+        '_': 'lodash'
+      })
+    ]
+
   }
 }
